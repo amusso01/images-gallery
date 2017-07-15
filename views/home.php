@@ -6,6 +6,7 @@ $tmplHead=file_get_contents($file);
 $file=$TEMPLATE_URL.'home.html';
 $tmplHome=file_get_contents($file);
 
+//make navigation bar
 $nav=makeNav();
 
 //replace template

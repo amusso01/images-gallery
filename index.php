@@ -17,3 +17,6 @@ include('includes/head.php');
 
 //check which views to display
 include url($view);
+
+
+include 'includes/footer.php';
