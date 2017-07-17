@@ -1,0 +1,12 @@
+<div class="flexMain">
+    <main>
+        <form enctype="multipart/form-data" action="{{selfPath}}" method="post">
+            <label for="img_title">{{lang[imageTitle]}}</label>
+            <input type="text" name="img_title" maxlength="50" id="img_title" />
+            <label for="img_desc">{{lang[imageDesc]}}</label>
+            <textarea name="img_desc" maxlength="150" rows="4" cols="30" id="img_desc"></textarea>
+            <label for="jpegfile">{{lang[imageType]}}</label>
+            <input type="file" name="jpegfile" id="jpegfile" />
+            <input type="submit" name="submit" value="{{lang[upload]}}" />
+        </form>
+    </main>

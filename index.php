@@ -12,6 +12,8 @@ $view=getUrl();
 //language
 require_once 'lang/'.$config['lang'].'.php';
 
+//todo check if post is set here and
+
 // Include the head
 include('includes/head.php');
 
