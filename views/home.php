@@ -11,6 +11,7 @@ $nav=makeNav();
 
 //replace template
 $tmplHead=str_replace('{{navigation}}',$nav,$tmplHead);
+$tmplHead=str_replace('{{lang[nav]}}',$lang['nav'],$tmplHead);
 $tmplHead=str_replace('{{date}}',$lang['date'],$tmplHead);
 $tmplHead=str_replace('{{lang[title]}}',$lang['title_home'],$tmplHead);
 

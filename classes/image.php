@@ -4,19 +4,17 @@ class image
 {
     private $title;
     private $description;
+    private $time;
+    private static $id = 0;
 
-
-    public function __construct($title)
+    public function __construct($title,$description,$time)
     {
-
+        $this->title=$title;
+        $this->description=$description;
+        $this->time=$time;
     }
     //setter
-    public function setTitle($title){
-        $this->title=$title;
-    }
-    public function setDescription($description){
-        $this->description=$description;
-    }
+
     //getter
     public function getTitle(){
         return $this->title;

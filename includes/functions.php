@@ -99,7 +99,45 @@ function makeDate($config){
 
 //navigation bar
 function makeNav(){
-    return '<li><a href="index.php?page=upload">Upload</a></li>';
+    return '<li><a href="index.php?page=upload">{{lang[nav]}}</a></li>';
+}
+
+//check if the $POST array has been created
+function isSubmited(){
+    if (isset($_POST['submit'])){
+        return true;
+    }
+    return false;
+}
+//check form field for completion
+function cleanDescription($description)
+{
+    $description = trim($description);
+    if (!empty($description)) {
+        if (strlen($description) > 250) {
+            $cleanDesc = strtolower($description);
+            $cleanDesc = ucfirst($cleanDesc);
+            return $cleanDesc;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+function cleanTitle($title){
+    $title=trim($title);
+    if (!empty($title)){
+        if (strlen($title)>50){
+            $cleanTitle=strtolower($title);
+            $cleanTitle=ucfirst($cleanTitle);
+            return $cleanTitle;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
 }
 
 //function autoloader to load the classes

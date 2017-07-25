@@ -10,6 +10,7 @@ $nav=makeNav();
 
 //replace template
 $tmplHead=str_replace('{{navigation}}',$nav,$tmplHead);
+$tmplHead=str_replace('{{lang[nav]}}',$lang['nav'],$tmplHead);
 $tmplHead=str_replace('{{date}}',$lang['date'],$tmplHead);
 $tmplHead=str_replace('{{lang[title]}}',$lang['title_404'],$tmplHead);
 $tmpl404=str_replace('{{lang[404]}}',$lang['404'],$tmpl404);

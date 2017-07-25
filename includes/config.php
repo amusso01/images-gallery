@@ -14,7 +14,7 @@ $self = htmlentities($_SERVER['PHP_SELF']);
 
 //general setting
 date_default_timezone_set('Europe/London');
-$config['lang']='en';
+$config['lang']='it';
 // database settings
 $config['db_user'] = 'root';
 $config['db_pass'] = '';

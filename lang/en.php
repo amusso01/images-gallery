@@ -9,4 +9,9 @@ $lang['imageTitle']='Picture Title';
 $lang['imageDesc']='Picture Description';
 $lang['imageType']='Please select Jpeg/Jpg file';
 $lang['upload']='Upload picture';
+$lang['nav']='Upload';
+$lang['file']='Choose File';
+//Error messages
+$lang['errorTitle']="The Title is missing or is too long!(50 chracters allowed)";
+$lang['errorDesc']="The Description is missing or is too long!(250 characters allowed)";
 
