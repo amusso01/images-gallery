@@ -16,22 +16,32 @@ $tmplHead=str_replace('{{lang[title]}}',$lang['title_upload'],$tmplHead);
 //Check if the $_POST exist
 if (isSubmited()) {
     $aside='<aside>';
-    $error=false;
+    $error=array();
     $sql=array();
     $cleanTitle = cleanTitle($_POST['img_title']);
     $cleanDesc = cleanDescription($_POST['img_desc']);
-    var_dump();
-    if (is_null($cleanTitle) || is_null($cleanDesc)) {
+    if ($cleanDesc!==false && $cleanTitle!==false) {
       $sql=['Title'=>$cleanTitle,'Description'=>$cleanDesc];
+      $aside.='';//todo build aside tag when photo check will be ok
+
       var_dump($sql);
+      //replace template
+        $tmplUpload=str_replace('{{selfPath}}',$self.'?page=upload',$tmplUpload);
+        $tmplUpload=str_replace('{{lang[imageTitle]}}',$lang['imageTitle'],$tmplUpload);
+        $tmplUpload=str_replace('{{lang[imageDesc]}}',$lang['imageDesc'],$tmplUpload);
+        $tmplUpload=str_replace('{{lang[imageType]}}',$lang['imageType'],$tmplUpload);
+        $tmplUpload=str_replace('{{lang[upload]}}',$lang['upload'],$tmplUpload);
+
+        $tmplUpload=str_replace('{{titleOk}}','',$tmplUpload);
+        $tmplUpload=str_replace('{{descOk}}','',$tmplUpload);
     }else {
-        if($cleanTitle){
+        if($cleanTitle!==false){
             $tmplUpload=str_replace('{{titleOk}}',$cleanTitle,$tmplUpload);
         }
-        if($cleanDesc){
+        if(!$cleanDesc!==false){
             $tmplUpload=str_replace('{{descOk}}',$cleanDesc,$tmplUpload);
         }
-        $error=true;
+
     }
 }else{
     //replace template

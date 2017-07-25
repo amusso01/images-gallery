@@ -112,32 +112,26 @@ function isSubmited(){
 //check form field for completion
 function cleanDescription($description)
 {
-    $description = trim($description);
-    if (!empty($description)) {
-        if (strlen($description) > 250) {
-            $cleanDesc = strtolower($description);
+    $cleanDesc = trim($description);
+    if ($cleanDesc!=='') {
+        if (strlen($cleanDesc) < 250) {
+            $cleanDesc = strtolower($cleanDesc);
             $cleanDesc = ucfirst($cleanDesc);
             return $cleanDesc;
-        } else {
-            return false;
         }
-    } else {
-        return false;
     }
+    return false;
 }
 function cleanTitle($title){
-    $title=trim($title);
-    if (!empty($title)){
-        if (strlen($title)>50){
-            $cleanTitle=strtolower($title);
+    $cleanTitle=trim($title);
+    if ($cleanTitle!==''){
+        if (strlen($cleanTitle)<50){
+            $cleanTitle=strtolower($cleanTitle);
             $cleanTitle=ucfirst($cleanTitle);
             return $cleanTitle;
-        }else{
-            return false;
         }
-    }else{
-        return false;
     }
+    return false;
 }
 
 //function autoloader to load the classes
