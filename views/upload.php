@@ -31,17 +31,30 @@ if (isSubmited()) {
         $tmplUpload=str_replace('{{lang[imageDesc]}}',$lang['imageDesc'],$tmplUpload);
         $tmplUpload=str_replace('{{lang[imageType]}}',$lang['imageType'],$tmplUpload);
         $tmplUpload=str_replace('{{lang[upload]}}',$lang['upload'],$tmplUpload);
-
         $tmplUpload=str_replace('{{titleOk}}','',$tmplUpload);
         $tmplUpload=str_replace('{{descOk}}','',$tmplUpload);
     }else {
         if($cleanTitle!==false){
             $tmplUpload=str_replace('{{titleOk}}',$cleanTitle,$tmplUpload);
-        }
-        if(!$cleanDesc!==false){
-            $tmplUpload=str_replace('{{descOk}}',$cleanDesc,$tmplUpload);
-        }
+        }else{
+            $aside.='<p>'.$lang["errorTitle"].'</p>';
+            $tmplUpload=str_replace('{{titleOk}}','',$tmplUpload);
 
+        }
+        if($cleanDesc!==false){
+            $tmplUpload=str_replace('{{descOk}}',$cleanDesc,$tmplUpload);
+        }else{
+            $tmplUpload=str_replace('{{descOk}}','',$tmplUpload);
+            $aside.='<p>'.$lang["errorDesc"].'</p>';
+        }//todo insert here the image mistakeand populate $aside variable with error
+        $aside.='</aside>';
+        //replace template
+        $tmplUpload=str_replace('{{selfPath}}',$self.'?page=upload',$tmplUpload);
+        $tmplUpload=str_replace('{{lang[imageTitle]}}',$lang['imageTitle'],$tmplUpload);
+        $tmplUpload=str_replace('{{lang[imageDesc]}}',$lang['imageDesc'],$tmplUpload);
+        $tmplUpload=str_replace('{{lang[imageType]}}',$lang['imageType'],$tmplUpload);
+        $tmplUpload=str_replace('{{lang[upload]}}',$lang['upload'],$tmplUpload);
+        $tmplUpload=str_replace('{{aside}}',$aside,$tmplUpload);
     }
 }else{
     //replace template
