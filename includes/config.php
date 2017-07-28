@@ -8,6 +8,11 @@ $MEDIA_URL = 'media/';
 // Set the template directory URL (useful if directory structure changes)
 $TEMPLATE_URL = $FILE_ROOT.'templates/';
 
+//path to images thumbnail
+$THUMB_URL=$FILE_ROOT.'storedImages/thumbnails';
+//path to original images
+$ORIGINAL _URL=$FILE_ROOT.'storedImages/original';
+
 //path of file
 $self = htmlentities($_SERVER['PHP_SELF']);
 
