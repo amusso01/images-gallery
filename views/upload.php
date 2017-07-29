@@ -18,15 +18,18 @@ $tmplHead=str_replace('{{lang[title]}}',$lang['title_upload'],$tmplHead);
 if (isSubmited()) {
     $aside='<aside>';
     $error=array();
-    $sql=array();
+    $cleanArray=array();
     $cleanTitle = cleanTitle($_POST['img_title']);
     $cleanDesc = cleanDescription($_POST['img_desc']);
         //if $_POST submitted and $_FILE is set check for error (Title,Description and the file image)
         if ($cleanDesc!==false && $cleanTitle!==false && fileClean($_FILES['jpegfile']['error'])==true && imageCheck(($_FILES['jpegfile']['tmp_name']))){
-              var_dump($_FILES['jpegfile']);
-              $sql=['Title'=>$cleanTitle,'Description'=>$cleanDesc];
+            // Replace non allowed chars in filename
+            $filename = preg_replace('/[^A-Za-z0-9\.\-]/', '', $_FILES['jpegfile']['name']);
+
+
+              $cleanArray=['Title'=>$cleanTitle,'Description'=>$cleanDesc];
               $aside.='';//todo build aside tag when photo check will be ok
-              var_dump($sql);
+              echo time();
               //replace template
                 $tmplUpload=str_replace('{{selfPath}}',$self.'?page=upload',$tmplUpload);
                 $tmplUpload=str_replace('{{lang[imageTitle]}}',$lang['imageTitle'],$tmplUpload);
@@ -85,10 +88,6 @@ if (isSubmited()) {
     $tmplUpload=str_replace('{{titleOk}}','',$tmplUpload);
     $tmplUpload=str_replace('{{descOk}}','',$tmplUpload);
 }
-
-
-
-
 
 //echo html
 echo $tmplHead;

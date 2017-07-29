@@ -30,6 +30,7 @@ CREATE TABLE `imagegallery` (
   `title` varchar(255) NOT NULL,
   `width` int(11) NOT NULL,
   `height` int(11) NOT NULL,
+  `date` BIGINT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

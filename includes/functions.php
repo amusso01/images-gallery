@@ -136,6 +136,9 @@ function cleanTitle($title){
 }
 //====All the following functions are used to check the file image for error====
 
+//Check the mime type of the file
+//Only Jpeg allowed
+//For future implementation of type just add case to the switch statment
 function imageCheck($fileName){
     $details=getimagesize($fileName);
     if($details!==false){
@@ -176,10 +179,9 @@ function fileClean($error){
     }
     return false;
 }
-
-//todo make a function that check  the other and return true or false
 //=================================================================================
 
+//This function is used to show the error in the $error array output of isFileUpload
 function showError($errorArray,$errorNumber){
     foreach ($errorArray as $key => $value){
         if ($errorNumber==$key)

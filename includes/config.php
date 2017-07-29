@@ -19,7 +19,7 @@ $self = htmlentities($_SERVER['PHP_SELF']);
 
 //general setting
 date_default_timezone_set('Europe/London');
-$config['lang']='it';
+$config['lang']='en';
 //thumbnail dimension
 define('THUMBNAIL_WIDTH', 150);
 define('THUMBNAIL_HEIGHT', 150);

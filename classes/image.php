@@ -4,14 +4,21 @@ class image
 {
     private $title;
     private $description;
-    private $time;
+    private $width;
+    private $heigth;
+    private $name;
+    private $date;
     private static $id = 0;
 
-    public function __construct($title,$description,$time)
+    public function __construct($title,$description,$width,$height,$name)
     {
+        self::$id=self::$id+1;
         $this->title=$title;
         $this->description=$description;
-        $this->time=$time;
+        $this->width=$width;
+        $this->heigth=$height;
+        $this->name=self::$id.'_'.$name;
+        $this->date=time();
     }
     //setter
 
