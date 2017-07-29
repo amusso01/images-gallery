@@ -11,7 +11,17 @@ $lang['imageType']='Selezionare un file Jpeg/Jpg';
 $lang['upload']='Carica la foto';
 $lang['nav']='Carica';
 $lang['file']='Seleziona un File';
-//Error messages
 $lang['errorTitle']="Il titolo non e' stato inserito o supera il limite di 50 caratteri!";
 $lang['errorDesc']="La Descrizione non e' stata inserita o supera il limite di 250 caratteri!";
-
+$uploadSize=ini_get("upload_max_filesize");
+$lang['invalidUpload']='Tentativo di caricare un file non autorizzato!!';
+$uploadErrors = array(
+    0 => 'File caricato con successo',
+    1 => 'Il file supera le massime dimensioni consentite in php.ini',
+    2 => 'Il file supera le massime dimensioni dichiarate nella HTML form]',
+    3 => 'Il file e\' stato caricato solo parzialmente',
+    4 => 'Nessun file e\' stato selezionato',
+    6 => 'Manca la cartella temporanea nel Server',
+    7 => 'Tentativo fallito di scrivere su disco',
+    8 => 'Un estensione di PHP ha bloccato il caricamento del file',
+);

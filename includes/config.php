@@ -11,7 +11,7 @@ $TEMPLATE_URL = $FILE_ROOT.'templates/';
 //path to images thumbnail
 $THUMB_URL=$FILE_ROOT.'storedImages/thumbnails';
 //path to original images
-$ORIGINAL _URL=$FILE_ROOT.'storedImages/original';
+$ORIGINAL_URL=$FILE_ROOT.'storedImages/original';
 
 //path of file
 $self = htmlentities($_SERVER['PHP_SELF']);
@@ -20,6 +20,12 @@ $self = htmlentities($_SERVER['PHP_SELF']);
 //general setting
 date_default_timezone_set('Europe/London');
 $config['lang']='it';
+//thumbnail dimension
+define('THUMBNAIL_WIDTH', 150);
+define('THUMBNAIL_HEIGHT', 150);
+
+
+
 // database settings
 $config['db_user'] = 'root';
 $config['db_pass'] = '';

@@ -109,12 +109,12 @@ function isSubmited(){
     }
     return false;
 }
-//check form field for completion
+//check form description for error
 function cleanDescription($description)
 {
     $cleanDesc = trim($description);
     if ($cleanDesc!=='') {
-        if (strlen($cleanDesc) < 250) {
+        if (strlen($cleanDesc) <250) {
             $cleanDesc = strtolower($cleanDesc);
             $cleanDesc = ucfirst($cleanDesc);
             return $cleanDesc;
@@ -122,6 +122,7 @@ function cleanDescription($description)
     }
     return false;
 }
+//check form title for error
 function cleanTitle($title){
     $cleanTitle=trim($title);
     if ($cleanTitle!==''){
@@ -132,6 +133,39 @@ function cleanTitle($title){
         }
     }
     return false;
+}
+//====All the following functions are used to check the file image for error====
+
+//
+function isImageFile($file,$errorCode)
+{
+    $error = array();
+    $valid = true;
+    if (!is_uploaded_file($file)) {
+        $valid = false;
+        $error = [0=>'{{invalidUpload}}'];
+        if ($errorCode !== 0) {
+            $valid = false;
+            $error=[1=>$errorCode];
+        }
+    }
+    if(!$valid){
+        return $error;
+    }
+    return true;
+}
+
+
+
+//=================================================================================
+
+function showError($errorArray,$errorNumber){
+    foreach ($errorArray as $key => $value){
+        if ($errorNumber==$key)
+        {
+            return $value;
+        }
+    }
 }
 
 //function autoloader to load the classes
