@@ -136,8 +136,24 @@ function cleanTitle($title){
 }
 //====All the following functions are used to check the file image for error====
 
-//
-function isImageFile($file,$errorCode)
+function imageCheck($fileName){
+    $details=getimagesize($fileName);
+    if($details!==false){
+        switch ($details[2]){
+            case IMAGETYPE_JPEG:
+                return true;
+                break;
+            case IMAGETYPE_JPEG2000:
+                return true;
+                break;
+            default:
+                return false;
+        }
+    }
+}
+//parameter temporary file name from $_FILE array and error code again from $_FILE array
+//return true if valid or array of error to be converted in the template replace process
+function isFileUpload($file, $errorCode)
 {
     $error = array();
     $valid = true;
@@ -154,9 +170,14 @@ function isImageFile($file,$errorCode)
     }
     return true;
 }
+function fileClean($error){
+    if ($error==0){
+        return true;
+    }
+    return false;
+}
 
-
-
+//todo make a function that check  the other and return true or false
 //=================================================================================
 
 function showError($errorArray,$errorNumber){
