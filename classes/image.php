@@ -1,23 +1,22 @@
 <?php
-//class to manipulate the image of the application
+//class to upload the image of the application
 class image
 {
-    private $title;
-    private $description;
-    private $width;
-    private $heigth;
-    private $name;
-    private $date;
-    private static $id = 0;
+    protected $title;
+    protected $description;
+    protected $width;
+    protected $heigth;
+    protected $name;
+    protected $date;
 
     public function __construct($title,$description,$width,$height,$name)
     {
-        self::$id=self::$id+1;
+
         $this->title=$title;
         $this->description=$description;
         $this->width=$width;
         $this->heigth=$height;
-        $this->name=self::$id.'_'.$name;
+        $this->name=$name;
         $this->date=time();
     }
     //setter

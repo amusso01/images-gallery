@@ -8,11 +8,6 @@ $MEDIA_URL = 'media/';
 // Set the template directory URL (useful if directory structure changes)
 $TEMPLATE_URL = $FILE_ROOT.'templates/';
 
-//path to images thumbnail
-$THUMB_URL=$FILE_ROOT.'storedImages/thumbnails';
-//path to original images
-$ORIGINAL_URL=$FILE_ROOT.'storedImages/original';
-
 //path of file
 $self = htmlentities($_SERVER['PHP_SELF']);
 
@@ -20,9 +15,13 @@ $self = htmlentities($_SERVER['PHP_SELF']);
 //general setting
 date_default_timezone_set('Europe/London');
 $config['lang']='en';
-//thumbnail dimension
-define('THUMBNAIL_WIDTH', 150);
-define('THUMBNAIL_HEIGHT', 150);
+
+
+$config['thumbWidth']=150;
+$config['thumbHeigth']=150;
+$config['thumbPrefix']='thumb_';
+$config['pathResized']=$FILE_ROOT.'storedImages/thumbnails';
+$config['pathOriginal']=$FILE_ROOT.'storedImages/original';
 
 
 

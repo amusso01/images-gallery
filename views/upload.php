@@ -23,13 +23,18 @@ if (isSubmited()) {
     $cleanDesc = cleanDescription($_POST['img_desc']);
         //if $_POST submitted and $_FILE is set check for error (Title,Description and the file image)
         if ($cleanDesc!==false && $cleanTitle!==false && fileClean($_FILES['jpegfile']['error'])==true && imageCheck(($_FILES['jpegfile']['tmp_name']))){
-            // Replace non allowed chars in filename
-            $filename = preg_replace('/[^A-Za-z0-9\.\-]/', '', $_FILES['jpegfile']['name']);
+                $tmpName=$_FILES['jpegfile']['tmp_name'];
+                $info=imageInfo($tmpName);
+              // Replace non allowed chars in filename
+                $fileName = preg_replace('/[^A-Za-z0-9\.\-]/', '', $_FILES['jpegfile']['name']);
+                $fileName=basename($fileName);
+                $image=new image($cleanTitle,$cleanDesc,$info['width'],$info['heigth'],$fileName);
+                var_dump($fileName);
 
 
-              $cleanArray=['Title'=>$cleanTitle,'Description'=>$cleanDesc];
-              $aside.='';//todo build aside tag when photo check will be ok
-              echo time();
+                $cleanArray=['Title'=>$cleanTitle,'Description'=>$cleanDesc];
+                $aside.='';//todo build aside tag when photo check will be ok
+
               //replace template
                 $tmplUpload=str_replace('{{selfPath}}',$self.'?page=upload',$tmplUpload);
                 $tmplUpload=str_replace('{{lang[imageTitle]}}',$lang['imageTitle'],$tmplUpload);

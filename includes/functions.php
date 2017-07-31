@@ -180,6 +180,19 @@ function fileClean($error){
     return false;
 }
 //=================================================================================
+//return array of some usefull informations of an image
+function imageInfo($fileName){
+    $info=array();
+    $image=getimagesize($fileName);
+    $info=[
+        'width'=>$image[0],
+        'heigth'=>$image[1],
+        'extension'=>$image['mime']
+    ];
+    $extension=explode('/',$info['extension']);
+    $info['extension']=$extension[1];
+    return $info;
+}
 
 //This function is used to show the error in the $error array output of isFileUpload
 function showError($errorArray,$errorNumber){
