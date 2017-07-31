@@ -27,9 +27,9 @@ if (isSubmited()) {
                 $info=imageInfo($tmpName);
               // Replace non allowed chars in filename
                 $fileName = preg_replace('/[^A-Za-z0-9\.\-]/', '', $_FILES['jpegfile']['name']);
-                $fileName=basename($fileName);
+                $fileName=pathinfo($fileName,PATHINFO_FILENAME).'.'.$info['extension'];
                 $image=new image($cleanTitle,$cleanDesc,$info['width'],$info['heigth'],$fileName);
-                var_dump($fileName);
+                var_dump($image);
 
 
                 $cleanArray=['Title'=>$cleanTitle,'Description'=>$cleanDesc];
