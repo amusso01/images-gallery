@@ -20,8 +20,8 @@ $config['lang']='en';
 $config['thumbWidth']=150;
 $config['thumbHeigth']=150;
 $config['thumbPrefix']='thumb_';
-$config['pathResized']=$FILE_ROOT.'storedImages/thumbnails';
-$config['pathOriginal']=$FILE_ROOT.'storedImages/original';
+$config['pathThumb']=$FILE_ROOT.'storedImages/thumbnails/';
+$config['pathOriginal']=$FILE_ROOT.'storedImages/original/';
 
 
 
@@ -30,3 +30,6 @@ $config['db_user'] = 'root';
 $config['db_pass'] = '';
 $config['db_host'] = 'localhost';
 $config['db_name'] = 'fmaw1';
+
+
+$sqlInsert='INSERT INTO imagegallery (filename,description,title,size,width,height,date) ';

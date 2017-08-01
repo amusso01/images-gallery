@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `imagegallery`;
 CREATE TABLE `imagegallery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `filename` varchar(255) NOT NULL,
-  `type` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `title` varchar(255) NOT NULL,
+  `size` int(11) UNSIGNED NOT NULL,
   `width` int(11) NOT NULL,
   `height` int(11) NOT NULL,
   `date` BIGINT UNSIGNED NOT NULL,

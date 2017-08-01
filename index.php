@@ -39,3 +39,5 @@ include url($view);
 
 
 include 'includes/footer.php';
+
+$mysqli->close();

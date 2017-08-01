@@ -203,6 +203,42 @@ function showError($errorArray,$errorNumber){
         }
     }
 }
+//Function to execute SELECT query
+//@parameter name of the table to select
+//@parameter name of the attribute to select default *
+//@parameter connection object
+//@return the number of row in mysqli::result object for the query
+function selectQuery($table,$myDb,$attribute='*'){
+    $sql='SELECT '.$attribute.' FROM '.$table;
+    $myDb->real_escape_string($sql);
+    if($result=$myDb->query($sql)){
+        $row=$result->current_field;
+    }else{
+        return $myDb->error;
+    }
+    $result->free();
+    return $row;
+}
+//this function check if the file and directory of file to be saved exist
+//@parameter directory where to save the file
+//@parameter filename pf the temporary file is $_FILE[]['tmp_name']
+//@return true if the file and dir exist or an array of error
+function dirCheck($dirName,$tmpName){
+    if(is_dir($dirName)){
+        if (is_file($tmpName)){
+            if (is_writable($dirName)){
+                return true;
+            }else{
+                $error=['directory permission negate!!'];
+            }
+        }else{
+            $error=['The image file does not exist!'];
+        }
+    }else{
+        $error=['The directory does not exist!'];
+    }
+    return $error;
+}
 
 //function autoloader to load the classes
 function myAutoloader($className){
