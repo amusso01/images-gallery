@@ -100,4 +100,5 @@ class image
         imagedestroy($new_img);
         imagedestroy($img_src);
     }
+
 }

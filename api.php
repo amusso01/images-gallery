@@ -20,7 +20,10 @@ if ($method=='GET'){
             //escape the id request prevent SQL injection
             $mysqli->real_escape_string($id);
             //prepare the sql request
-            $sql="SELECT * FROM `imagegallery` WHERE id=$id";
+            $sql="SELECT * FROM `imagegallery`";
+            if ($id!=='all'){
+                $sql.=" WHERE id=$id";
+            }
             //execute statement
            $result=$mysqli->query($sql);
             if($result!==false){
@@ -30,6 +33,13 @@ if ($method=='GET'){
                     header('Content-type: application/json');
                     echo json_encode($row);
                     $result->free();
+                    $mysqli->close();
+                }elseif($result->num_rows>1){
+                    header('Content-type: application/json');
+                    while ($row=$result->fetch_all()){
+                        echo json_encode($row);
+                    }
+                    $result->free();//todo fix or remove 'all' value
                     $mysqli->close();
                 }else{
                     http_response_code(404);

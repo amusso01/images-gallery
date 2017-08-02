@@ -20,6 +20,9 @@ function url($id){
         case 'upload':
             return 'views/upload.php';
             break;
+        case 'large':
+            return 'views/large.php';
+            break;
         default:
             return 'views/404.php';
             break;
@@ -275,6 +278,33 @@ function formatSizeUnits($bytes)
     return $bytes;
 }
 
+
+//Function to read file name in a dir and store it in an array
+//@$dirPath the path of the dir to read
+//@return path to dir with all the file inside as index of array and id as value
+function dirFile($dirPath){
+    $imgArray=array();
+    if (file_exists($dirPath)){
+        $dir=opendir($dirPath);
+        while(false!==($file=readdir($dir))){
+            if(($file=='.')||($file=='..')){
+                continue;
+            }else{
+                $id=explode('_',$file);
+                $imgArray[$dirPath.$file]=$id[1];
+            }
+        }
+        closedir($dir);
+        return $imgArray;
+    }else{
+        return false;
+    }
+}
+
+function apiCall($id){
+    $handle=curl_init();
+
+}
 
 //function autoloader to load the classes
 function myAutoloader($className){
