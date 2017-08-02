@@ -1,6 +1,6 @@
 <?php
 // Set a document root URL. May be useful depending how URLs are served.
-$FILE_ROOT = 'C:/wamp64/www/phpMysqlFma/FMA/';
+$FILE_ROOT = '';
 
 // Set the media URL (where the media files will be...css, storedImages, js etc)
 $MEDIA_URL = 'media/';

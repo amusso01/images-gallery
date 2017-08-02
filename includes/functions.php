@@ -240,6 +240,42 @@ function dirCheck($dirName,$tmpName){
     return $error;
 }
 
+//function convert byte to readable language. This function has been adopted from a post on Stack overflow
+/***************************************************************************************
+ *    Title: PHP filesize MB/KB conversion
+ *    Author: Adnan
+ *    Date: 31/04/2011
+ *    Availability: https://stackoverflow.com/questions/5501427/php-filesize-mb-kb-conversion
+ *
+ ***************************************************************************************/
+
+function formatSizeUnits($bytes)
+{
+    if ($bytes >= 1048576)
+    {
+        $bytes = number_format($bytes / 1048576, 2) . ' MB';
+    }
+    elseif ($bytes >= 1024)
+    {
+        $bytes = number_format($bytes / 1024, 2) . ' KB';
+    }
+    elseif ($bytes > 1)
+    {
+        $bytes = $bytes . ' bytes';
+    }
+    elseif ($bytes == 1)
+    {
+        $bytes = $bytes . ' byte';
+    }
+    else
+    {
+        $bytes = '0 bytes';
+    }
+
+    return $bytes;
+}
+
+
 //function autoloader to load the classes
 function myAutoloader($className){
     include 'classes/'.$className.'.php';

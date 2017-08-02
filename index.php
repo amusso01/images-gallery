@@ -15,24 +15,6 @@ require_once 'lang/'.$config['lang'].'.php';
 // Include the head
 include('includes/head.php');
 
-//check if $_POST exist and display the view accordingly
-//if (isSubmited()){
-//    $cleanTitle=cleanTitle($_POST['img_title']);
-//    $cleanDesc=cleanDescription($_POST['img_desc']);
-//    if ($cleanTitle!==false){
-//        if ($cleanDesc!==false){
-//
-//        }else{
-//
-//        }
-//    }else{
-//
-//    }
-//    include 'views/upload.php';
-//}else{
-//    //check which views to display
-//    include url($view);
-//}
 
 include url($view);
 
