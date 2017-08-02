@@ -301,9 +301,23 @@ function dirFile($dirPath){
     }
 }
 
-function apiCall($id){
+function apiCall($id,$url){
     $handle=curl_init();
-
+    $finalUrl=$url.
+    curl_setopt($handle,CURLOPT_URL,$url);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+}
+function jsonPath($path){
+    $base=explode('/',$path);
+    $urlString='';
+    foreach ($base as $key=> $value){
+        if ($key==0){
+            $urlString.=$value;
+        }else{
+            $urlString.='/'.$value;
+        }
+    }
+    return $_SERVER['HTTP_HOST'].$urlString;
 }
 
 //function autoloader to load the classes
