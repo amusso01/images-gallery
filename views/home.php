@@ -11,9 +11,10 @@ $tmplThumb=file_get_contents($file);
 //make navigation bar
 $nav=makeNav();
 
-
-$imageArray=dirFile($config['pathThumb']);
+$imageArray=dirFile($config['pathThumb']);//array of image path
 var_dump($imageArray);
+
+$jsonUrl=jsonPath($)
 
 foreach ($imageArray as $key=>$value){
 
