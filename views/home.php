@@ -11,7 +11,7 @@ $tmplThumb=file_get_contents($file);
 //make navigation bar
 $nav=makeNav();
 
-var_dump($_SERVER['DOCUMENT_ROOT']);
+var_dump($self);
 
 $imageArray=dirFile($config['pathThumb']);
 foreach ($imageArray as $key=>$value){

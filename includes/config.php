@@ -12,6 +12,10 @@ $TEMPLATE_URL = $FILE_ROOT.'templates/';
 $self = htmlentities($_SERVER['PHP_SELF']);
 
 
+//url of the Json web service
+
+//$jsonService=
+
 //general setting
 date_default_timezone_set('Europe/London');
 $config['lang']='en';
