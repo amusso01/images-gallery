@@ -34,13 +34,6 @@ if ($method=='GET'){
                     echo json_encode($row);
                     $result->free();
                     $mysqli->close();
-                }elseif($result->num_rows>1){
-                    header('Content-type: application/json');
-                    while ($row=$result->fetch_all()){
-                        echo json_encode($row);
-                    }
-                    $result->free();//todo fix or remove 'all' value
-                    $mysqli->close();
                 }else{
                     http_response_code(404);
                     die('This id is not in the database');

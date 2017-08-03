@@ -300,15 +300,31 @@ function dirFile($dirPath){
         return false;
     }
 }
-
+//@parameter id of the image
+//@parameter $url of the api service
+//cURL function to @return the json result of the call or false in case of error
 function apiCall($id,$url){
     $handle=curl_init();
-    $finalUrl=$url.
-    curl_setopt($handle,CURLOPT_URL,$url);
+    $finalUrl=$url.'?id='.$id;
+    $flag=true;
+    curl_setopt($handle,CURLOPT_URL,$finalUrl);
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($handle);
+    if(curl_errno($handle)) {
+        $flag=false;
+    }
+    curl_close($handle);
+    if(!$flag){
+        return false;
+    }
+    return $result;
 }
+
+//parameter the php self path
+//return the absolute path without the last file in this case index.php
 function jsonPath($path){
     $base=explode('/',$path);
+    unset($base[count($base)-1]);
     $urlString='';
     foreach ($base as $key=> $value){
         if ($key==0){
