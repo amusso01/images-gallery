@@ -16,7 +16,7 @@ $tmplHead=str_replace('{{lang[title]}}',$lang['title_upload'],$tmplHead);
 
 //Check if the $_POST exist and display view and template accordingly
 if (isSubmited()) {
-    $aside='<aside>';
+    $aside='<aside class="uploadInfo">';
     $error=array();
     $cleanArray=array();
     $cleanTitle = cleanTitle($_POST['img_title']);

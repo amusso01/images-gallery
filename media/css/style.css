@@ -69,19 +69,32 @@ html{
 }
 body{
     font-family: Arial,Verdana,sans-serif;
-    display: flex;
-    flex-direction: column;
     height: 100vh;
 }
-a{
+a {
     text-decoration: none;
-    color: midnightblue;
+    color: palegreen;
+}
+a:hover{
+    -webkit-transition: all .4s ease-in;
+    -moz-transition: all .4s ease-in;
+    -o-transition: all .4s ease-in;
+    transition: all .4s ease-in;
+    color: mediumspringgreen;
+}
+h1 a{
+    color: mediumseagreen;
 }
 .flexMain{
-    flex: 1 0 auto;
+    min-height: 100vh;
 }
 footer {
-    flex-shrink: 0;
+    background-color: darkgrey;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    padding-bottom: 5px;
+
 }
 .error{
     color:red ;
@@ -91,17 +104,140 @@ footer {
 
 .mainHeader{
     display: flex;
-    justify-content: space-around;
-    background-color: mediumaquamarine;
-
+    background-color:#1b1e24;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
 }
 .flexMenu{
-    flex-grow: 3;
+    flex-grow: 1;
 }
-.flexMenu .title h1{
+.flexMenu .title{
     font-family: 'Fredoka One', cursive;
     font-size: 50px;
 }
 #date{
     flex-grow: 1;
+    color: whitesmoke;
+    text-align: center;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 35px;
+}
+#date p{
+    font-size: 0.8em;
+}
+.navBar a{
+    font-size: 1.1em;
+}
+.navBar a:hover{
+    font-size: 1.2em;
+}
+
+/*MAIN*/
+
+main h1{
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 15px;
+    font-size: 1.3em;
+}
+
+/*form style*/
+.formStyle{
+    max-width: 650px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+    margin-bottom: 65px;
+}
+.formStyle label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.formStyle input,
+.formStyle textarea{
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color: #1b1e24;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+
+}
+.formStyle input[type='text']:focus,
+.formStyle textarea:focus{
+    background: #d2d9dd;
+}
+.formStyle input[type="submit"]
+{
+    font-weight: bold;
+    position: relative;
+    display: block;
+    padding: 15px 20px 14px 20px;
+    color: #1b1e24;
+    margin: 0 auto;
+    background: palegreen;
+    font-size: 17px;
+    text-align: center;
+    font-style: normal;
+    width: 35%;
+    border: 1px solid mediumseagreen;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+.formStyle input[type="submit"]:hover
+{
+    transition: all .4s ease-in;
+    background: mediumseagreen;
+}
+
+/*aside style*/
+.uploadInfo{
+    max-width: 650px;
+    margin:0 auto;
+    line-height: 1.5em;
+    color: red;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+}
+.uploadInfo .imageInfo{
+    color: #1b1e24;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+.imageInfo h3{
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+/*FOOTER*/
+
+footer header h4{
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.author-info{
+    font-size: 0.83em;
+    padding-right: 5px;
+    line-height: 1.15em;
 }

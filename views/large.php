@@ -24,7 +24,6 @@ if (isset($_GET['picture'])&&$_GET['id']=='broken'){
     foreach ($originArray as $key=> $value) {
         if($id==$value){
             $imagePath=$key;
-            var_dump($imagePath);
             $imgName=explode('/',$imagePath);
             break;
         }
@@ -65,8 +64,7 @@ foreach ($resizedArray as $key=>$value){
 
 
 
-if (!$found){//if image resized does not exist create one and display it
-
+if ($found){//if image resized does not exist create one and display it
     $resizedPath=resizeImage($config['pathOriginal'],$config['pathResized'],$imgName[2]);
     $tmplLarge=str_replace('{{resizedImage}}',$resizedPath,$tmplLarge);
 }else{

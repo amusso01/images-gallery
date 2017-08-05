@@ -1,14 +1,17 @@
 <div class="flexMain">
     <main>
-        <form enctype="multipart/form-data" action="{{selfPath}}" method="post">
-            <label for="img_title">{{lang[imageTitle]}}</label>
-            <input type="text" name="img_title" maxlength="50" id="img_title" value="{{titleOk}}" />
-            <label for="img_desc">{{lang[imageDesc]}}</label>
-            <textarea name="img_desc" maxlength="250" rows="4" cols="30" id="img_desc">{{descOk}}</textarea>
-            <label for="jpegfile">{{lang[imageType]}}</label>
-            <input type="file" name="jpegfile" id="jpegfile"/><span>Max file size {{uploadSize}}</span>
-            <input type="submit" name="submit" value="{{lang[upload]}}" />
-        </form>
+        <h1>Upload Pictures</h1>
+        <div class="formStyle">
+            <form enctype="multipart/form-data" action="{{selfPath}}" method="post">
+                <label for="img_title">{{lang[imageTitle]}}</label>
+                <input type="text" name="img_title" maxlength="50" id="img_title" value="{{titleOk}}" />
+                <label for="img_desc">{{lang[imageDesc]}}</label>
+                <textarea name="img_desc" maxlength="250" rows="4" cols="30" id="img_desc">{{descOk}}</textarea>
+                <label for="jpegfile">{{lang[imageType]}}</label>
+                <input type="file" name="jpegfile" id="jpegfile"/>
+                <input type="submit" name="submit" value="{{lang[upload]}}" />
+            </form>
+        </div>
         {{aside}}
     </main>
 </div>
