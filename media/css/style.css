@@ -11,8 +11,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
+b, u, i, center,ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
@@ -49,7 +48,6 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
 /*MY STYLE*/
 
 html {
@@ -94,7 +92,6 @@ footer {
     justify-content: space-between;
     padding-top: 8px;
     padding-bottom: 5px;
-
 }
 .error{
     color:red ;
@@ -142,9 +139,8 @@ main h1{
     text-align: center;
     padding-top: 35px;
     padding-bottom: 15px;
-    font-size: 1.3em;
+    font-size: 1.6em;
 }
-
 /*form style*/
 .formStyle{
     max-width: 650px;
@@ -179,7 +175,6 @@ main h1{
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 30px;
-
 }
 .formStyle input[type='text']:focus,
 .formStyle textarea:focus{
@@ -207,7 +202,6 @@ main h1{
     transition: all .4s ease-in;
     background: mediumseagreen;
 }
-
 /*aside style*/
 .uploadInfo{
     max-width: 650px;
@@ -216,8 +210,11 @@ main h1{
     color: red;
     font-size: 0.9em;
     font-weight: bold;
-    display: flex;
     justify-content: space-around;
+    display: flex;
+}
+.uploadInfo p{
+    display: block;
 }
 .uploadInfo .imageInfo{
     color: #1b1e24;
@@ -228,6 +225,50 @@ main h1{
     font-weight: bold;
     margin-bottom: 8px;
 }
+/*homepage main*/
+.flexMain .flexImage .imageThumb{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+.thumbnail{
+   flex-basis: 30%;
+}
+.thumbnail figure{
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 10px;
+}
+figcaption{
+    margin-top: 12px;
+}
+/*large page*/
+.large{
+    display: flex;
+    justify-content: center;
+}
+.large dt{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.large dd{
+    margin-bottom: 15px;
+}
+.largeImage{
+    display: flex;
+    justify-content: center;
+}
+.largeImage figure{
+    text-align: center;
+}
+.largeImage figure figcaption{
+    font-size: 1.5em;
+    margin-bottom: 35px;
+    margin-top: 40px;
+}
+
+
 /*FOOTER*/
 
 footer header h4{

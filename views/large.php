@@ -35,7 +35,6 @@ if (isset($_GET['picture'])&&$_GET['id']=='broken'){
     $json=apiCall($id,$jsonUrl);
     $jsonDecode=json_decode($json);
     $imgName=$jsonDecode->id.'_'.$jsonDecode->filename;//name of the image in the original folder
-    var_dump($imgName);
     $tmplLarge=str_replace('{{title}}',$jsonDecode->title,$tmplLarge);
     $tmplInfo=str_replace('{{langDesc}}',$lang['desc'],$tmplInfo);
     $tmplInfo=str_replace('{{description}}',htmlspecialchars($jsonDecode->description),$tmplInfo);
@@ -52,7 +51,7 @@ if (isset($_GET['picture'])&&$_GET['id']=='broken'){
 }
 
 $resizedArray=dirFile($config['pathResized']);//array of resized image path
-var_dump($resizedArray);
+
 
 //check if the resized image exist
 foreach ($resizedArray as $key=>$value){

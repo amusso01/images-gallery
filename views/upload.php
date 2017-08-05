@@ -74,6 +74,7 @@ if (isSubmited()) {
                 $tmplUpload=str_replace('{{aside}}',$aside,$tmplUpload);
 
         }else {
+            $aside.='<div class="infoError">'.PHP_EOL;
             if($cleanTitle!==false){//if Title has no error redisplay it
                 $tmplUpload=str_replace('{{titleOk}}',$cleanTitle,$tmplUpload);
             }else{
@@ -97,6 +98,7 @@ if (isSubmited()) {
             if(fileClean($_FILES['jpegfile']['error'])&&!imageCheck($_FILES['jpegfile']['tmp_name'])){
                 $aside.='<p>File type not accepted please upload Jpeg</p>'.PHP_EOL;
             }
+            $aside.='</div>'.PHP_EOL;
             $aside.='</aside>';
             //replace template. Form submitted error present in the submission
             $tmplUpload=str_replace('{{selfPath}}',$self.'?page=upload',$tmplUpload);
