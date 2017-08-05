@@ -27,9 +27,9 @@ foreach ($imageArray as $key=>$value){
         $tmplThumb=str_replace('{{id}}','broken&picture='.$value,$tmplThumb);//todo create a page for large image without db
         $imageHtml.=$tmplThumb;
     }else{
-        $tmplThumb=str_replace('{{thumbnailPath}}',$key,$tmplThumb);
-        $tmplThumb=str_replace('{{title}}',$jsonDecode->title,$tmplThumb);
-        $tmplThumb=str_replace('{{id}}',$jsonDecode->id,$tmplThumb);
+        $tmplThumb=str_replace('{{thumbnailPath}}',htmlspecialchars($key),$tmplThumb);
+        $tmplThumb=str_replace('{{title}}',htmlspecialchars($jsonDecode->title),$tmplThumb);
+        $tmplThumb=str_replace('{{id}}',htmlspecialchars($jsonDecode->id),$tmplThumb);
         $imageHtml.=$tmplThumb;
     }
 }

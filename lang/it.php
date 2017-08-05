@@ -10,9 +10,16 @@ $lang['imageDesc']='Descrizione della foto';
 $lang['imageType']='Selezionare un file Jpeg/Jpg';
 $lang['upload']='Carica la foto';
 $lang['nav']='Carica';
+$lang['desc']='Descrizione:';
+$lang['uploaded']='Caricata il:';
+$lang['size']='dimensioni del file originale:';
+$lang['download']='Scarica il file originale';
 $lang['file']='Seleziona un File';
 $lang['errorTitle']="Il titolo non e' stato inserito o supera il limite di 50 caratteri!";
 $lang['errorDesc']="La Descrizione non e' stata inserita o supera il limite di 250 caratteri!";
+$lang['errorNoDb']="Nessun id per quest immagine nel database!";
+                                                                                                                                $lang['errorNoDb']="Nessuna corrispondenza nel database per l'immagine";
+
 $uploadSize=ini_get("upload_max_filesize");
 $lang['invalidUpload']='Tentativo di caricare un file non autorizzato!!';
 $uploadErrors = array(

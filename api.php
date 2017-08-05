@@ -38,7 +38,8 @@ if ($method=='GET'){
                     http_response_code(404);
                     die('This id is not in the database');
                 }
-            }else{
+            }
+            else{
                 http_response_code(404);
                 die($mysqli->error);
             }

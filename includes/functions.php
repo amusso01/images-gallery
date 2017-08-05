@@ -185,7 +185,6 @@ function fileClean($error){
 //=================================================================================
 //return array of some usefull informations of an image
 function imageInfo($fileName){
-    $info=array();
     $image=getimagesize($fileName);
     $info=[
         'width'=>$image[0],
@@ -282,7 +281,7 @@ function formatSizeUnits($bytes)
 //Function to read file name in a dir and store it in an array
 //@$dirPath the path of the dir to read
 //@return path to dir with all the file inside as index of array and id as value
-function dirFile($dirPath){
+function dirFile($dirPath,$indices=1){
     $imgArray=array();
     if (file_exists($dirPath)){
         $dir=opendir($dirPath);
@@ -291,7 +290,7 @@ function dirFile($dirPath){
                 continue;
             }else{
                 $id=explode('_',$file);
-                $imgArray[$dirPath.$file]=$id[1];
+                $imgArray[$dirPath.$file]=$id[$indices];
             }
         }
         closedir($dir);
@@ -335,6 +334,49 @@ function jsonPath($path){
     }
     return $_SERVER['HTTP_HOST'].$urlString;
 }
+// Resize image
+//@parameter origin's path of the file image
+//@parameter destination path of the resized image
+//@parameter name of the file with the id ex id_imageName
+//@return the final path of the resized image
+function resizeImage($originPath, $destinationPath,$imageName){
+    $img_dts = getimagesize($originPath.$imageName);
+    if($img_dts !== false){
+        switch($img_dts[2]){
+            case IMAGETYPE_JPEG:
+                $img_src = imagecreatefromjpeg($originPath.$imageName);
+                break;
+        }
+    }
+    $img_w = $img_dts[0];
+    $img_h = $img_dts[1];
+    $new_img_w = 600;
+    $new_img_h = 600;
+    // Scale image
+    $scale_ratio = $img_w / $img_h;
+    if($img_w >= 600 && $img_h >= 600){
+        if(($new_img_w / $new_img_h) > $scale_ratio){
+            $new_img_w = $new_img_h * $scale_ratio;
+        }else if(($new_img_w / $new_img_h) == $scale_ratio){
+            $new_img_w = $new_img_w;
+            $new_img_h = $new_img_h;
+        }else{
+            $new_img_h = $new_img_w / $scale_ratio;
+        }
+    }else{
+        $new_img_w = $img_w;
+        $new_img_h = $img_h;
+    }
+    // Create image
+    $new_img = imagecreatetruecolor($new_img_w, $new_img_h);
+    imagecopyresampled($new_img, $img_src, 0, 0, 0, 0, $new_img_w, $new_img_h, $img_w, $img_h);
+    imagejpeg($new_img, $destinationPath.'r_'.$imageName, 90);
+    imagedestroy($new_img);
+    imagedestroy($img_src);
+    return $destinationPath.'r_'.$imageName;
+}
+
+
 
 //function autoloader to load the classes
 function myAutoloader($className){

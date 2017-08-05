@@ -26,6 +26,7 @@ $config['thumbHeigth']=150;
 $config['thumbPrefix']='thumb_';
 $config['pathThumb']=$FILE_ROOT.'storedImages/thumbnails/';
 $config['pathOriginal']=$FILE_ROOT.'storedImages/original/';
+$config['pathResized']=$FILE_ROOT.'storedImages/resized/';
 
 
 

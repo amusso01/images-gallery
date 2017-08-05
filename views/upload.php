@@ -47,11 +47,11 @@ if (isSubmited()) {
                             $aside.='<div class="imageInfo">'.PHP_EOL.
                                 '<h3>Image succesfully uploaded!!</h3>'.PHP_EOL;
                             $aside.='<ul>'.PHP_EOL;
-                            $aside.='<li>Title: '.$image->getTitle().'</li>'.PHP_EOL;
-                            $aside.= '<li>Description: '.$image->getDescription().'</li>'.PHP_EOL;
+                            $aside.='<li>Title: '.htmlspecialchars($image->getTitle()).'</li>'.PHP_EOL;
+                            $aside.= '<li>Description: '.htmlspecialchars($image->getDescription()).'</li>'.PHP_EOL;
                             $aside.='<li>Uploaded on: '.date('d-m-Y H:i:s',$image->getDate()).'</li>'.PHP_EOL;
                             $aside.='</div>'.PHP_EOL.
-                                '<div class="thumbnail"><img src="'.$image->thumbImage().'" alt="'.$image->getTitle().'">'.PHP_EOL.'</div>'.PHP_EOL;
+                                '<div class="thumbnail"><img src="'.$image->thumbImage().'" alt="'.htmlspecialchars($image->getTitle()).'">'.PHP_EOL.'</div>'.PHP_EOL;
                         }else{
                             $aside.='<p>File Upload failed</p>';
                         }
