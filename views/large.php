@@ -29,13 +29,14 @@ if (isset($_GET['picture'])&&$_GET['id']=='broken'){
         }
     }
 
-
 }elseif (is_numeric($_GET['id'])){
     $id=$_GET['id'];
     $jsonUrl=jsonPath($self).'/api.php';//api url
     $json=apiCall($id,$jsonUrl);
     $jsonDecode=json_decode($json);
-    $idAndImage=$jsonDecode->id.'_'.$jsonDecode->filename;//name of the image in the original folder
+    $imgName=$jsonDecode->id.'_'.$jsonDecode->filename;//name of the image in the original folder
+    var_dump($imgName);
+    $tmplLarge=str_replace('{{title}}',$jsonDecode->title,$tmplLarge);
     $tmplInfo=str_replace('{{langDesc}}',$lang['desc'],$tmplInfo);
     $tmplInfo=str_replace('{{description}}',htmlspecialchars($jsonDecode->description),$tmplInfo);
     $tmplInfo=str_replace('{{langDate}}',$lang['uploaded'],$tmplInfo);
@@ -51,7 +52,7 @@ if (isset($_GET['picture'])&&$_GET['id']=='broken'){
 }
 
 $resizedArray=dirFile($config['pathResized']);//array of resized image path
-
+var_dump($resizedArray);
 
 //check if the resized image exist
 foreach ($resizedArray as $key=>$value){
@@ -62,10 +63,11 @@ foreach ($resizedArray as $key=>$value){
     }
 }
 
-
-
-if ($found){//if image resized does not exist create one and display it
+if (!$found&& isset($_GET['picture'])){//if image resized does not exist create one and display it
     $resizedPath=resizeImage($config['pathOriginal'],$config['pathResized'],$imgName[2]);
+    $tmplLarge=str_replace('{{resizedImage}}',$resizedPath,$tmplLarge);
+}elseif(!$found && is_numeric($_GET['id'])){
+    $resizedPath=resizeImage($config['pathOriginal'],$config['pathResized'],$imgName);
     $tmplLarge=str_replace('{{resizedImage}}',$resizedPath,$tmplLarge);
 }else{
     $tmplLarge=str_replace('{{resizedImage}}',$imagePath,$tmplLarge);
