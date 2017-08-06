@@ -14,11 +14,10 @@ $lang['desc']='Description:';
 $lang['uploaded']='Uploaded on:';
 $lang['size']='Original file size:';
 $lang['download']='Download original image';
-
 $lang['file']='Choose File';
 $lang['errorTitle']="The Title is missing or is too long!(50 chracters allowed)";
 $lang['errorDesc']="The Description is missing or is too long!(250 characters allowed)";
-$lang['errorNoDb']="Missing database reference for the image";
+$lang['errorNoDb']="<p>Missing database reference for the image</p>";
 
 $uploadSize=ini_get("upload_max_filesize");
 $lang['invalidUpload']='Uploading File Failed, Permission Denied!';

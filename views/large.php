@@ -10,6 +10,7 @@ $tmplInfo=file_get_contents($file);
 //make navigation bar
 $nav=makeNav();
 
+
 $html='';//html to replace in the template
 $found=false;//flag. We search if the resized image exist, if is not we will create one
 
@@ -19,7 +20,7 @@ if (isset($_GET['picture'])&&$_GET['id']=='broken'){
     $id=$_GET['picture'];
     $tmplLarge=str_replace('{{title}}','',$tmplLarge);
     $tmplLarge=str_replace('{{aside}}',$lang['errorNoDb'],$tmplLarge);
-    $html.='<p>'.$tmplLarge.'</p>'.PHP_EOL;
+//    $html.='<p>'.$tmplLarge.'</p>'.PHP_EOL;
     $originArray=dirFile($config['pathOriginal'],0);//array of original path
     foreach ($originArray as $key=> $value) {
         if($id==$value){
@@ -71,8 +72,6 @@ if (!$found&& isset($_GET['picture'])){//if image resized does not exist create 
 }else{
     $tmplLarge=str_replace('{{resizedImage}}',$imagePath,$tmplLarge);
 }
-
-
 
 
 //replace template

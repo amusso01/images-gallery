@@ -248,12 +248,22 @@ figcaption{
     display: flex;
     justify-content: center;
 }
+.large p{
+    margin-top: 25px;
+    color: red;
+}
 .large dt{
     font-weight: bold;
     margin-bottom: 5px;
 }
 .large dd{
     margin-bottom: 15px;
+}
+.large dd a{
+    color: mediumblue;
+}
+.large dd a:hover{
+    text-decoration: underline;
 }
 .largeImage{
     display: flex;
@@ -271,7 +281,7 @@ figcaption{
 
 /*FOOTER*/
 
-footer header h4{
+footer .header h4{
     font-size: 0.9em;
     margin-top: 10px;
     margin-left: 5px;

@@ -24,7 +24,7 @@ foreach ($imageArray as $key=>$value){
     if (!is_object($jsonDecode)){
         $tmplThumb=str_replace('{{thumbnailPath}}',$key,$tmplThumb);
         $tmplThumb=str_replace('{{title}}',"<p class='error'>$json</p>",$tmplThumb);
-        $tmplThumb=str_replace('{{id}}','broken&picture='.$value,$tmplThumb);//todo create a page for large image without db
+        $tmplThumb=str_replace('{{id}}','broken&picture='.$value,$tmplThumb);
         $imageHtml.=$tmplThumb;
     }else{
         $tmplThumb=str_replace('{{thumbnailPath}}',htmlspecialchars($key),$tmplThumb);

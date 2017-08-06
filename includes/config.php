@@ -29,10 +29,9 @@ $config['pathResized']=$FILE_ROOT.'storedImages/resized/';
 
 
 // database settings
-$config['db_user'] = 'root';
-$config['db_pass'] = '';
-$config['db_host'] = 'localhost';
-$config['db_name'] = 'fmaw1';
-
+$config['db_user'] = 'amusso01';
+$config['db_pass'] = 'bbkmysql';
+$config['db_host'] = 'mysqlsrv.dcs.bbk.ac.uk';
+$config['db_name'] = 'amusso01db';
 
 $sqlInsert='INSERT INTO imagegallery (filename,description,title,size,width,height,date) ';
