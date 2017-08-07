@@ -35,17 +35,30 @@ if (isset($_GET['picture'])&&$_GET['id']=='broken'){
     $jsonUrl=jsonPath($self).'/api.php';//api url
     $json=apiCall($id,$jsonUrl);
     $jsonDecode=json_decode($json);
-    $imgName=$jsonDecode->id.'_'.$jsonDecode->filename;//name of the image in the original folder
-    $tmplLarge=str_replace('{{title}}',$jsonDecode->title,$tmplLarge);
-    $tmplInfo=str_replace('{{langDesc}}',$lang['desc'],$tmplInfo);
-    $tmplInfo=str_replace('{{description}}',htmlspecialchars($jsonDecode->description),$tmplInfo);
-    $tmplInfo=str_replace('{{langDate}}',$lang['uploaded'],$tmplInfo);
-    $tmplInfo=str_replace('{{date}}',date('d-m-Y H:i:s',htmlspecialchars($jsonDecode->date)),$tmplInfo);
-    $tmplInfo=str_replace('{{langSize}}',$lang['size'],$tmplInfo);
-    $tmplInfo=str_replace('{{size}}',formatSizeUnits(htmlspecialchars($jsonDecode->size)),$tmplInfo);
-    $tmplInfo=str_replace('{{langDownload}}',$lang['download'],$tmplInfo);
-    $tmplInfo=str_replace('{{originalPath}}',$config['pathOriginal'].htmlspecialchars($jsonDecode->id).'_'.htmlspecialchars($jsonDecode->filename),$tmplInfo);
-    $html.=$tmplInfo;
+    if (is_object($jsonDecode)){
+        $imgName=$jsonDecode->id.'_'.$jsonDecode->filename;//name of the image in the original folder
+        $tmplLarge=str_replace('{{title}}',$jsonDecode->title,$tmplLarge);
+        $tmplInfo=str_replace('{{langDesc}}',$lang['desc'],$tmplInfo);
+        $tmplInfo=str_replace('{{description}}',htmlspecialchars($jsonDecode->description),$tmplInfo);
+        $tmplInfo=str_replace('{{langDate}}',$lang['uploaded'],$tmplInfo);
+        $tmplInfo=str_replace('{{date}}',date('d-m-Y H:i:s',htmlspecialchars($jsonDecode->date)),$tmplInfo);
+        $tmplInfo=str_replace('{{langSize}}',$lang['size'],$tmplInfo);
+        $tmplInfo=str_replace('{{size}}',formatSizeUnits(htmlspecialchars($jsonDecode->size)),$tmplInfo);
+        $tmplInfo=str_replace('{{langDownload}}',$lang['download'],$tmplInfo);
+        $tmplInfo=str_replace('{{originalPath}}',$config['pathOriginal'].htmlspecialchars($jsonDecode->id).'_'.htmlspecialchars($jsonDecode->filename),$tmplInfo);
+        $html.=$tmplInfo;
+    }else{
+        $tmplLarge=str_replace('{{title}}',$json,$tmplLarge);
+        $tmplInfo=str_replace('{{langDesc}}','',$tmplInfo);
+        $tmplInfo=str_replace('{{description}}','',$tmplInfo);
+        $tmplInfo=str_replace('{{langDate}}','',$tmplInfo);
+        $tmplInfo=str_replace('{{date}}','',$tmplInfo);
+        $tmplInfo=str_replace('{{langSize}}','',$tmplInfo);
+        $tmplInfo=str_replace('{{size}}','',$tmplInfo);
+        $tmplInfo=str_replace('{{langDownload}}','',$tmplInfo);
+        $tmplInfo=str_replace('{{originalPath}}','',$tmplInfo);
+        $html.=$tmplInfo;
+    }
 }else{
     header( 'Location: '.$self.'?page=404' ) ;
     die();

@@ -12,7 +12,6 @@ Installation:
     1.1. $FILE_ROOT to match the root URL;
     1.2. database credentials to match your db;
     1.3. languages supported English->'en' and Italian->'it';
-    1.4.
 
 2. Create SQL Database, use the imageInfoDb.sql file provided in the root folder of the application
 

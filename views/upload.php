@@ -31,35 +31,37 @@ if (isSubmited()) {
                 $image=new image($cleanTitle,$cleanDesc,$_FILES['jpegfile']['size'],$info['width'],$info['heigth'],$fileName);//create image object
                 //create sql query
                 $sqlInsert.="VALUES ('".$image->getFileName()."','".$image->getDescription()."','".$image->getTitle()."',".$image->getSize().",".$image->getWidth().",".$image->getHeight().",".$image->getDate().")";
-
                 //insert data into Database
                 $mysqli->real_escape_string($sqlInsert);
-                $mysqli->query($sqlInsert);
-                $id=$mysqli->insert_id;
-                $image->setFileName($id);//add the id to the file name to save in this way $id_$fileName
-                $image->setOriginDir($config['pathOriginal']);
-                $image->setThumbDir($config['pathThumb']);
-                    //ready to save the original image and the thumbnail
-                    if($check=dirCheck($image->getOriginDir(),$tmpName)){
-                        $finalPath=$config['pathOriginal'].$image->getFileName();
-                        if (move_uploaded_file($tmpName,$finalPath)){
-                            $image->create_thumbs();
-                            $aside.='<div class="imageInfo">'.PHP_EOL.
-                                '<h3>Image succesfully uploaded!!</h3>'.PHP_EOL;
-                            $aside.='<ul>'.PHP_EOL;
-                            $aside.='<li>Title: '.htmlspecialchars($image->getTitle()).'</li>'.PHP_EOL;
-                            $aside.= '<li>Description: '.htmlspecialchars($image->getDescription()).'</li>'.PHP_EOL;
-                            $aside.='<li>Uploaded on: '.date('d-m-Y H:i:s',$image->getDate()).'</li>'.PHP_EOL;
-                            $aside.='</div>'.PHP_EOL.
-                                '<div class="thumbnail"><img src="'.$image->thumbImage().'" alt="'.htmlspecialchars($image->getTitle()).'">'.PHP_EOL.'</div>'.PHP_EOL;
+                if ($mysqli->query($sqlInsert)){
+                    $id=$mysqli->insert_id;
+                    $image->setFileName($id);//add the id to the file name to save in this way $id_$fileName
+                    $image->setOriginDir($config['pathOriginal']);
+                    $image->setThumbDir($config['pathThumb']);
+                        //ready to save the original image and the thumbnail
+                        if($check=dirCheck($image->getOriginDir(),$tmpName)){
+                            $finalPath=$config['pathOriginal'].$image->getFileName();
+                            if (move_uploaded_file($tmpName,$finalPath)){
+                                $image->create_thumbs();
+                                $aside.='<div class="imageInfo">'.PHP_EOL.
+                                    '<h3>Image succesfully uploaded!!</h3>'.PHP_EOL;
+                                $aside.='<ul>'.PHP_EOL;
+                                $aside.='<li>Title: '.htmlspecialchars($image->getTitle()).'</li>'.PHP_EOL;
+                                $aside.= '<li>Description: '.htmlspecialchars($image->getDescription()).'</li>'.PHP_EOL;
+                                $aside.='<li>Uploaded on: '.date('d-m-Y H:i:s',$image->getDate()).'</li>'.PHP_EOL;
+                                $aside.='</div>'.PHP_EOL.
+                                    '<div class="thumbnail"><img src="'.$image->thumbImage().'" alt="'.htmlspecialchars($image->getTitle()).'">'.PHP_EOL.'</div>'.PHP_EOL;
+                            }else{
+                                $aside.='<p>File Upload failed</p>';
+                            }
                         }else{
-                            $aside.='<p>File Upload failed</p>';
+                            foreach ($check as $key=>$value){
+                                $aside.='<p>'.$value.'</p>';
+                            }
                         }
-                    }else{
-                        foreach ($check as $key=>$value){
-                            $aside.='<p>'.$value.'</p>';
-                        }
-                    }
+                }else{
+                    $aside.='<p>'.$mysqli->error.'</p>';
+                }
 
 
               //replace template

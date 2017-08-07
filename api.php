@@ -21,7 +21,7 @@ if ($method=='GET'){
             $mysqli->real_escape_string($id);
             //prepare the sql request
             $sql="SELECT * FROM `imagegallery`";
-            if ($id!=='all'){
+            if (is_numeric($id)){
                 $sql.=" WHERE id=$id";
             }
             //execute statement
